@@ -1,8 +1,8 @@
-import {Cronjob} from "cron";
+import { CronJob } from "cron";
 import http from "http";
 import https from "https";
 
-const job = new Cronjob("*/14 * * *", function() {
+const job = new CronJob("*/14 * * * *", function() {
     const base = process.env.FrONTEND_URL;
     if (!base) return;
     const url = new URL("/health", base);
