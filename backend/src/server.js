@@ -21,13 +21,13 @@ app.use(cors({
 app.use(clerkMiddleware());
 
 app.get("/working", (req, res) => {
-    res.status(200).json({ message: OK });
+    res.status(200).json({ message: "OK" });
 });
 
 if(fs.existsSync(publicDir)){
     app.use(express.static(publicDir));
     app.get("/{*any}", (req,res,next) => {
-        res.sendfile(path.join(publicDir, "index.html"), (err) => next(err));
+        res.sendFile(path.join(publicDir, "index.html"), (err) => next(err));
     });
 }
 
