@@ -20,7 +20,7 @@ app.use(cors({
 app.use(clerkMiddleware());
 
 app.get("/working", (req, res) => {
-    res.status(200).json({ message: true });
+    res.status(200).json({ message: OK });
 });
 
 if(fs.existsSync(publicDir)){
@@ -33,4 +33,6 @@ if(fs.existsSync(publicDir)){
 app.listen(PORT, () => {
     connectDB();
     console.log("Server is running on port: ", PORT);
+
+    if (process.env.NODE_ENV === "production") job.start();
 });
