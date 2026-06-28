@@ -9,6 +9,7 @@ import { clerkMiddleware } from "@clerk/express";
 import job from "./lib/cron.js";
 import clerkWebhook from "./webhooks/clerk.webhook.js";
 import authRoutes from "./routes/auth.route.js";
+import meaasgeRoutes from "./routes/message.route.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -26,11 +27,12 @@ app.use(cors({
 }));
 app.use(clerkMiddleware());
 
-app.get("/working", (req, res) => {
+app.get("/health", (req, res) => {
     res.status(200).json({ message: "OK" });
 });
 
 app.use("/api/auth", authRoutes)
+app.use("/api/messages", meaasgeRoutes)
 
 if(fs.existsSync(publicDir)){
     app.use(express.static(publicDir));
