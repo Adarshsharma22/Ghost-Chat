@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
 import { io } from "socket.io-client";
 
-const BASE_URL = import.meta.env.MODE === "development" ? "https://ghost-chat-853p.onrender.com" : "/";
+const BASE_URL = import.meta.env.MODE === "https://ghost-chat-853p.onrender.com" ? "http://localhost:3001" : "/";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
